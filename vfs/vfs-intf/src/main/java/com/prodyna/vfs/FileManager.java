@@ -7,6 +7,7 @@ import com.prodyna.vfs.model.Folder;
 import com.prodyna.vfs.model.Node;
 import com.prodyna.vfs.model.spec.FileSpecification;
 import com.prodyna.vfs.model.spec.FolderSpecification;
+import com.prodyna.vfs.search.SearchCriteria;
 
 public interface FileManager extends Observable {
 
@@ -25,4 +26,8 @@ public interface FileManager extends Observable {
 	long getFolderSize(Folder folder);
 
 	void list();
+	
+	Set<Node> search(SearchCriteria searchCriteria);
+
+	Set<Node> search(SearchCriteria searchCriteria, Folder folder);
 }

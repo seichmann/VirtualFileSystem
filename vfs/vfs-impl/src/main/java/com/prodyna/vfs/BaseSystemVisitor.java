@@ -1,7 +1,7 @@
-package com.prodyna.vfs.filesystem.visitor;
+package com.prodyna.vfs;
 
-import com.prodyna.vfs.FileSystemRegistry;
 import com.prodyna.vfs.filesystem.FileSystem;
+import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
 import com.prodyna.vfs.model.AudioFileImpl;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.FolderImpl;

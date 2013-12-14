@@ -17,6 +17,8 @@ import com.prodyna.vfs.model.NodeType;
 import com.prodyna.vfs.model.filesystem.FileSystemType;
 import com.prodyna.vfs.model.spec.FileSpecification;
 import com.prodyna.vfs.model.spec.FolderSpecification;
+import com.prodyna.vfs.search.SearchCriteria;
+import com.prodyna.vfs.search.visitor.SearchVisitor;
 
 public class FileManagerImpl implements FileManager, FileSystemListener {
 
@@ -119,5 +121,15 @@ public class FileManagerImpl implements FileManager, FileSystemListener {
 		}
 		
 		return size;
+	}
+
+	public Set<Node> search(SearchCriteria searchCriteria) {
+		return this.search(searchCriteria, rootNode);
+	}
+
+	public Set<Node> search(SearchCriteria searchCriteria, Folder folder) {
+		SearchVisitor searchVisitor = new SearchVisitor(searchCriteria);
+		((FolderImpl) folder).accept(searchVisitor);
+		return searchVisitor.getSearchResult();
 	}
 }

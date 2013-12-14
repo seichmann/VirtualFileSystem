@@ -1,5 +1,6 @@
 package com.prodyna.vfs.filesystem.visitor;
 
+import com.prodyna.vfs.BaseSystemVisitor;
 import com.prodyna.vfs.model.AudioFileImpl;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.ImageFileImpl;
