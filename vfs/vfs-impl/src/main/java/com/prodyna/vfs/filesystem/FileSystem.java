@@ -1,13 +1,17 @@
 package com.prodyna.vfs.filesystem;
 
-import com.prodyna.vfs.model.File;
-import com.prodyna.vfs.model.Folder;
+import com.prodyna.vfs.Observable;
+import com.prodyna.vfs.model.FileImpl;
+import com.prodyna.vfs.model.FolderImpl;
+import com.prodyna.vfs.model.NodeImpl;
 import com.prodyna.vfs.model.spec.FileSpecification;
+import com.prodyna.vfs.model.spec.FolderSpecification;
 
-public interface FileSystem {
+public interface FileSystem extends Observable {
 
-	Folder createFolder(Folder parent, String name);
+	FolderImpl createFolder(String name, FolderSpecification specification);
+	
+	FileImpl createFile(FolderImpl parent, String name, byte[] content, FileSpecification spec);
 
-	File createFile(Folder parent, String name, byte[] content, FileSpecification spec);
-
+	void addChild(FolderImpl parent, NodeImpl child);
 }

@@ -8,7 +8,7 @@ import com.prodyna.vfs.model.Node;
 import com.prodyna.vfs.model.spec.FileSpecification;
 import com.prodyna.vfs.model.spec.FolderSpecification;
 
-public interface FileManager {
+public interface FileManager extends Observable {
 
 	Folder getRoot();
 	

@@ -1,10 +1,10 @@
 package com.prodyna.vfs.model;
 
-import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
 
 public abstract class NodeImpl implements Node, Visitable {
 
 	private String name;
+	private NodeImpl parent;
 	
 	public String getName() {
 		return name;
@@ -15,5 +15,13 @@ public abstract class NodeImpl implements Node, Visitable {
 	}
 
 	public abstract NodeType getType();
+
+	public void setParent(FolderImpl parent) {
+		this.parent = parent;
+	}
+
+	public NodeImpl getParent() {
+		return parent;
+	}
 	
 }

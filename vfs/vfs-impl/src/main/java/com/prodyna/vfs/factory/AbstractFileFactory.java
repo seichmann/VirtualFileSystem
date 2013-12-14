@@ -3,7 +3,6 @@ package com.prodyna.vfs.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.InternalFolderImpl;
 import com.prodyna.vfs.model.spec.AudioFileSpecification;
@@ -25,11 +24,7 @@ public abstract class AbstractFileFactory {
 		throw new RuntimeException("specification not found");
 	}
 
-	public abstract File createFile(InternalFolderImpl parent, String name,  byte[] content);
-	
-	protected void addFileToFolder(InternalFolderImpl parent, FileImpl file) {
-		parent.getChildrenList().add(file);
-	}
+	public abstract FileImpl createFile(String name,  byte[] content);
 	
 	static void registerFileType(Class<? extends FileSpecification> specClass, AbstractFileFactory factoryImpl) {
 		TYPE_REGISTRY.put(specClass, factoryImpl);
