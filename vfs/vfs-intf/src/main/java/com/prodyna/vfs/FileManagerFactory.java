@@ -2,9 +2,12 @@ package com.prodyna.vfs;
 
 import javax.imageio.spi.ServiceRegistry;
 
-public class FileManagerFactory {
+public final class FileManagerFactory {
 	
 	private static FileManager INSTANCE;
+	
+	private FileManagerFactory() {
+	}
 	
 	public static synchronized FileManager getInstance() {
 		if (INSTANCE == null) {
