@@ -3,9 +3,12 @@ package com.prodyna.vfs.factory;
 import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.InternalFolderImpl;
 import com.prodyna.vfs.model.WordFileImpl;
+import com.prodyna.vfs.model.spec.WordFileSpecification;
 
 public class WordFileFactoryImpl extends AbstractFileFactory {
 	
+	private static final AbstractFileFactory instance;
+
 	@Override
 	public File createFile(InternalFolderImpl parent, String name, byte[] content) {
 		WordFileImpl result = new WordFileImpl();
@@ -14,4 +17,10 @@ public class WordFileFactoryImpl extends AbstractFileFactory {
 		addFileToFolder(parent, result);
 		return result;
 	}
+	
+	static {
+		instance = new WordFileFactoryImpl();
+		AbstractFileFactory.registerFileType(WordFileSpecification.class, instance);
+	}
+
 }

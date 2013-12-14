@@ -1,34 +1,32 @@
 package com.prodyna.vfs.factory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.FileImpl;
-import com.prodyna.vfs.model.Folder;
 import com.prodyna.vfs.model.InternalFolderImpl;
-import com.prodyna.vfs.model.spec.AudioFileSpecification;
 import com.prodyna.vfs.model.spec.FileSpecification;
-import com.prodyna.vfs.model.spec.PDFFileSpecification;
-import com.prodyna.vfs.model.spec.VideoFileSpecification;
-import com.prodyna.vfs.model.spec.WordFileSpecification;
 
 public abstract class AbstractFileFactory {
+	
+	private static final Map<Class<? extends FileSpecification>, AbstractFileFactory> TYPE_REGISTRY = new HashMap<Class<? extends FileSpecification>, AbstractFileFactory>();
 
 	public static AbstractFileFactory getInstance(FileSpecification spec) {
-		if (spec instanceof AudioFileSpecification) {
-			return new AudioFileFactoryImpl();
-		} else if (spec instanceof VideoFileSpecification) {
-			return new VideoFileFactoryImpl();
-		} else if (spec instanceof PDFFileSpecification) {
-			return new PDFFileFactoryImpl();
-		} else if (spec instanceof WordFileSpecification) {
-			return new WordFileFactoryImpl();
-		} else {
-			throw new RuntimeException("xxx");
+		AbstractFileFactory abstractFileFactory = TYPE_REGISTRY.get(spec.getClass());
+		if (abstractFileFactory != null) {
+			return abstractFileFactory;
 		}
+		throw new RuntimeException("specification not found");
 	}
 
 	public abstract File createFile(InternalFolderImpl parent, String name,  byte[] content);
 	
 	protected void addFileToFolder(InternalFolderImpl parent, FileImpl file) {
 		parent.getChildrenList().add(file);
+	}
+	
+	static void registerFileType(Class<? extends FileSpecification> specClass, AbstractFileFactory factoryImpl) {
+		
 	}
 }
