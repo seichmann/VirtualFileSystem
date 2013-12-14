@@ -1,5 +1,8 @@
 package com.prodyna.vfs.filesystem;
 
+import java.util.Collections;
+import java.util.Set;
+
 import com.prodyna.vfs.FileSystemListener;
 import com.prodyna.vfs.factory.VirtualFolderFactoryImpl;
 import com.prodyna.vfs.model.FileImpl;
@@ -23,7 +26,7 @@ public class VirtualFileSystem implements FileSystem {
 
 	public FolderImpl createFolder(String name,
 			FolderSpecification specification) {
-		throw new UnsupportedOperationException();
+		return folderFactory.createFolder(name);
 	}
 
 	public FileImpl createFile(FolderImpl parent, String name, byte[] content,
@@ -33,6 +36,10 @@ public class VirtualFileSystem implements FileSystem {
 
 	public void addChild(FolderImpl parent, NodeImpl child) {
 		throw new UnsupportedOperationException();
+	}
+
+	public Set<NodeImpl> getChildren(FolderImpl folder) {
+		return Collections.emptySet();
 	}
 
 }

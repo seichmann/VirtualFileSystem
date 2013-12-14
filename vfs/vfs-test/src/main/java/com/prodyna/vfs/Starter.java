@@ -23,11 +23,18 @@ public class Starter {
         fileManager.addFile(subFolder, "bla2", new String("yyy").getBytes(), new PDFFileSpecification());
         fileManager.addFile(subFolder, "bla3", new String("zzz").getBytes(), new ImageFileSpecification());
 
-        subFolder = fileManager.addFolder(subFolder, "SubSubFolder");
-        fileManager.addFile(subFolder, "bla4", new String("yyy").getBytes(), new PDFFileSpecification());
-        fileManager.addFile(subFolder, "bla5", new String("zzz").getBytes(), new ImageFileSpecification());
+        Folder subsubFolder = fileManager.addFolder(subFolder, "SubSubFolder");
+        fileManager.addFile(subsubFolder, "bla4", new String("yyy").getBytes(), new PDFFileSpecification());
+        fileManager.addFile(subsubFolder, "bla5", new String("zzz").getBytes(), new ImageFileSpecification());
         
+        fileManager.addFile(subFolder, "bla6", new String("yyy").getBytes(), new PDFFileSpecification());
+        fileManager.addFile(subFolder, "bla7", new String("zzz").getBytes(), new ImageFileSpecification());
+
         fileManager.list();
+
+        fileManager.addFile(root, "silent", new String("zzz").getBytes(), new ImageFileSpecification());
+
+        System.out.println("Size of root folder: " + fileManager.getFolderSize(root));
 	}
 
 }

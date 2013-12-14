@@ -1,5 +1,7 @@
 package com.prodyna.vfs.filesystem;
 
+import java.util.Set;
+
 import com.prodyna.vfs.Observable;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.FolderImpl;
@@ -14,4 +16,6 @@ public interface FileSystem extends Observable {
 	FileImpl createFile(FolderImpl parent, String name, byte[] content, FileSpecification spec);
 
 	void addChild(FolderImpl parent, NodeImpl child);
+	
+	Set<NodeImpl> getChildren(FolderImpl folder);
 }

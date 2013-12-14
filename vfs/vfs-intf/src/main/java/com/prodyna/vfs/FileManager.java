@@ -1,6 +1,6 @@
 package com.prodyna.vfs;
 
-import java.util.List;
+import java.util.Set;
 
 import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.Folder;
@@ -16,11 +16,13 @@ public interface FileManager extends Observable {
 	
 	Folder addFolder(Folder parent, String name);
 	
-	List<Node> getChildren(Folder parent);
+	Set<Node> getChildren(Folder parent);
 	
 	File addFile(Folder parent, String name, byte[] content, FileSpecification spec);
 
 	FileManager getInstance();
+	
+	long getFolderSize(Folder folder);
 
 	void list();
 }

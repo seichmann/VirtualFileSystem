@@ -5,8 +5,6 @@ import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
 public class FileImpl extends NodeImpl implements File{
 	private byte[] content;
 	
-	private int size;
-
 	public byte[] getContent() {
 		return content;
 	}
@@ -16,13 +14,9 @@ public class FileImpl extends NodeImpl implements File{
 	}
 
 	public int getSize() {
-		return size;
+		return content.length;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
-	
 	@Override
 	public NodeType getType() {
 		return NodeType.FILE;

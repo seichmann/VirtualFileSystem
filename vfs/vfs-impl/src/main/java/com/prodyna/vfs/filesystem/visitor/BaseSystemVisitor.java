@@ -1,5 +1,7 @@
 package com.prodyna.vfs.filesystem.visitor;
 
+import com.prodyna.vfs.FileSystemRegistry;
+import com.prodyna.vfs.filesystem.FileSystem;
 import com.prodyna.vfs.model.AudioFileImpl;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.FolderImpl;
@@ -14,43 +16,32 @@ import com.prodyna.vfs.model.WordFileImpl;
 public class BaseSystemVisitor implements FileSystemVisitor {
 
 	public void visit(VideoFileImpl file) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(AudioFileImpl file) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(ImageFileImpl file) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(WordFileImpl file) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(PDFFileImpl file) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(InternalFolderImpl virtualFolderImpl) {
 		visitChildren(virtualFolderImpl);
 	}
 
-	private void visitChildren(FolderImpl folderImpl) {
-		for (NodeImpl node : folderImpl.getChildrenList()) {
+	private void visitChildren(FolderImpl folder) {
+		FileSystem fileSystem = FileSystemRegistry.getInstance().getFileSystem(folder.getSystemType());
+		for (NodeImpl node : fileSystem.getChildren(folder)) {
 			node.accept(this);
 		}
 	}
 
 	public void visit(FileImpl fileImpl) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void visit(VirtualFolderImpl virtualFolderImpl) {
