@@ -1,5 +1,5 @@
 package com.prodyna.vfs.model.spec;
 
-public interface VideoFileSpecification extends FileSpecification {
+public class VideoFileSpecification implements FileSpecification {
 
 }

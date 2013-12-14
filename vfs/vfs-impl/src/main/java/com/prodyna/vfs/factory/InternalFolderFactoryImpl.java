@@ -6,9 +6,10 @@ import com.prodyna.vfs.model.NodeType;
 
 public class InternalFolderFactoryImpl  {
 
-	public Folder createFolder(Folder parent, String name) {
+	public Folder createFolder(InternalFolderImpl parent, String name) {
 		InternalFolderImpl result = new InternalFolderImpl();
 		result.setName(name);
+		parent.getChildrenList().add(result);
 		return result;
 	}
 

@@ -7,6 +7,7 @@ import java.util.List;
 import com.prodyna.vfs.filesystem.FileSystem;
 import com.prodyna.vfs.filesystem.InternalFileSystem;
 import com.prodyna.vfs.filesystem.VirtualFileSystem;
+import com.prodyna.vfs.filesystem.visitor.ListingFileSystemVisitor;
 import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.Folder;
 import com.prodyna.vfs.model.FolderImpl;
@@ -23,6 +24,7 @@ public class FileManagerImpl implements FileManager{
 	
 	public FileManagerImpl() {
 		rootNode = new InternalFolderImpl();
+		rootNode.setName("root");
 	}
 	
 	public Folder getRoot() {
@@ -41,7 +43,7 @@ public class FileManagerImpl implements FileManager{
 		return addFolder(parent, name, new FolderSpecification() {
 			
 			public FileSystemType getSystemType() {
-				return  FileSystemType.INTERNAL;
+				return FileSystemType.INTERNAL;
 			}
 		});
 	}
@@ -69,4 +71,8 @@ public class FileManagerImpl implements FileManager{
 	public FileManager getInstance() {
 			return INSTANCE;
 		}
+
+	public void list() {
+		rootNode.accept(new ListingFileSystemVisitor());
+	}
 }

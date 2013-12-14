@@ -1,5 +1,5 @@
 package com.prodyna.vfs.model.spec;
 
-public interface ImageFileSpecification extends FileSpecification {
+public class ImageFileSpecification implements FileSpecification {
 
 }

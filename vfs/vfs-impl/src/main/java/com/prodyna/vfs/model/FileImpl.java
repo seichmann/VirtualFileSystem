@@ -1,5 +1,7 @@
 package com.prodyna.vfs.model;
 
+import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
+
 public class FileImpl extends NodeImpl implements File{
 	private byte[] content;
 	
@@ -26,4 +28,7 @@ public class FileImpl extends NodeImpl implements File{
 		return NodeType.FILE;
 	}
 
+	public void accept(FileSystemVisitor visitor) {
+		visitor.visit(this);
+	}
 }

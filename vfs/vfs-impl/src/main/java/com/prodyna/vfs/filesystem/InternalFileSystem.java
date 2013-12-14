@@ -12,7 +12,7 @@ public class InternalFileSystem implements FileSystem {
 	private InternalFolderFactoryImpl folderFactory = new InternalFolderFactoryImpl();
 	
 	public Folder createFolder(Folder parent, String name) {
-		return folderFactory.createFolder(parent, name);
+		return folderFactory.createFolder((InternalFolderImpl) parent, name);
 	}
 
 	public File createFile(Folder parent, String name, byte[] content,

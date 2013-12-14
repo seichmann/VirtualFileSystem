@@ -6,7 +6,6 @@ import com.prodyna.vfs.model.InternalFolderImpl;
 import com.prodyna.vfs.model.spec.AudioFileSpecification;
 
 public class AudioFileFactoryImpl extends AbstractFileFactory {
-	private static final AudioFileFactoryImpl instance;
 
 	@Override
 	public File createFile(InternalFolderImpl parent, String name, byte[] content) {
@@ -16,10 +15,4 @@ public class AudioFileFactoryImpl extends AbstractFileFactory {
 		addFileToFolder(parent, result);
 		return result;
 	}
-	
-	static {
-		instance = new AudioFileFactoryImpl();
-		AbstractFileFactory.registerFileType(AudioFileSpecification.class, instance);
-	}
-
 }

@@ -21,4 +21,6 @@ public interface FileManager {
 	File addFile(Folder parent, String name, byte[] content, FileSpecification spec);
 
 	FileManager getInstance();
+
+	void list();
 }

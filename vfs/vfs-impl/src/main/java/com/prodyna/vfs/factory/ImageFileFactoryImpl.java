@@ -6,7 +6,6 @@ import com.prodyna.vfs.model.InternalFolderImpl;
 import com.prodyna.vfs.model.spec.ImageFileSpecification;
 
 public class ImageFileFactoryImpl extends AbstractFileFactory {
-	private static final ImageFileFactoryImpl instance;
 
 	@Override
 	public File createFile(InternalFolderImpl parent, String name, byte[] content) {
@@ -17,8 +16,4 @@ public class ImageFileFactoryImpl extends AbstractFileFactory {
 		return result;
 	}
 
-	static {
-		instance = new ImageFileFactoryImpl();
-		AbstractFileFactory.registerFileType(ImageFileSpecification.class, instance);
-	}
 }

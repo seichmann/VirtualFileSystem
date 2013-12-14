@@ -1,6 +1,8 @@
 package com.prodyna.vfs.model;
 
-public abstract class NodeImpl implements Node {
+import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
+
+public abstract class NodeImpl implements Node, Visitable {
 
 	private String name;
 	
@@ -13,4 +15,5 @@ public abstract class NodeImpl implements Node {
 	}
 
 	public abstract NodeType getType();
+	
 }

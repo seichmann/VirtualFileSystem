@@ -6,7 +6,12 @@ import java.util.Map;
 import com.prodyna.vfs.model.File;
 import com.prodyna.vfs.model.FileImpl;
 import com.prodyna.vfs.model.InternalFolderImpl;
+import com.prodyna.vfs.model.spec.AudioFileSpecification;
 import com.prodyna.vfs.model.spec.FileSpecification;
+import com.prodyna.vfs.model.spec.ImageFileSpecification;
+import com.prodyna.vfs.model.spec.PDFFileSpecification;
+import com.prodyna.vfs.model.spec.VideoFileSpecification;
+import com.prodyna.vfs.model.spec.WordFileSpecification;
 
 public abstract class AbstractFileFactory {
 	
@@ -27,6 +32,14 @@ public abstract class AbstractFileFactory {
 	}
 	
 	static void registerFileType(Class<? extends FileSpecification> specClass, AbstractFileFactory factoryImpl) {
-		
+		TYPE_REGISTRY.put(specClass, factoryImpl);
+	}
+	
+	static {
+		AbstractFileFactory.registerFileType(AudioFileSpecification.class,  new AudioFileFactoryImpl());
+		AbstractFileFactory.registerFileType(VideoFileSpecification.class,  new VideoFileFactoryImpl());
+		AbstractFileFactory.registerFileType(PDFFileSpecification.class,  new PDFFileFactoryImpl());
+		AbstractFileFactory.registerFileType(ImageFileSpecification.class,  new ImageFileFactoryImpl());
+		AbstractFileFactory.registerFileType(WordFileSpecification.class,  new WordFileFactoryImpl());
 	}
 }

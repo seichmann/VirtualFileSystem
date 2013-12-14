@@ -1,5 +1,5 @@
 package com.prodyna.vfs.model.spec;
 
-public interface PDFFileSpecification extends FileSpecification {
+public class PDFFileSpecification implements FileSpecification {
 
 }

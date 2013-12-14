@@ -1,5 +1,9 @@
 package com.prodyna.vfs.model;
 
-public class ImageFileImpl extends MediaFileImpl {
+import com.prodyna.vfs.filesystem.visitor.FileSystemVisitor;
 
+public class ImageFileImpl extends MediaFileImpl {
+	public void accept(FileSystemVisitor visitor) {
+		visitor.visit(this);
+	}
 }

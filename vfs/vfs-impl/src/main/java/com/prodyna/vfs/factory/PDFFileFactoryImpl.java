@@ -7,8 +7,6 @@ import com.prodyna.vfs.model.spec.PDFFileSpecification;
 
 public class PDFFileFactoryImpl extends AbstractFileFactory {
 
-	private static final PDFFileFactoryImpl instance;
-
 	@Override
 	public File createFile(InternalFolderImpl parent, String name, byte[] content) {
 		PDFFileImpl result = new PDFFileImpl();
@@ -16,11 +14,6 @@ public class PDFFileFactoryImpl extends AbstractFileFactory {
 		result.setContent(content);
 		addFileToFolder(parent, result);
 		return result;
-	}
-	
-	static {
-		instance = new PDFFileFactoryImpl();
-		AbstractFileFactory.registerFileType(PDFFileSpecification.class, instance);
 	}
 	
 }
